@@ -59,7 +59,7 @@ box-sizing: border-box;
     padding-top: 0; /* Quitamos este padding si estaba empujando el banner */
 }
  .hero {
-    background-image: url(/Banner.jpg);
+    background-image: url(../Banner.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
