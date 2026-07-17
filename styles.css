@@ -374,23 +374,70 @@ body {
     font-size: 18px;
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN (MÓVILES)
-   ========================================== */
+
 @media (max-width: 768px) {
+    /* Ajustamos el body para que la nueva navbar más alta no tape el contenido */
+    body {
+        padding-top: 95px; 
+    }
+
+    /* Navbar en Móvil: Apilamos el logo arriba y los links abajo */
     .navbar {
-        padding: 15px 20px;
+        flex-direction: column; /* Coloca el logo arriba y los enlaces abajo */
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        gap: 8px; /* Espacio exacto entre el logo y los botones */
     }
     
+    /* ¡Traemos de vuelta el logo "GTA VI"! */
+    .nav-logo {
+        display: block !important;
+    }
+
+    .nav-logo a {
+        font-size: 18px; /* Un poco más pequeño para que se vea fino */
+        letter-spacing: 2px;
+    }
+
+    /* Distribuimos los 5 enlaces de forma compacta y horizontal */
+    .nav-links {
+        gap: 8px; /* Separación perfecta para pantallas de 375px */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 11px; /* Tamaño ideal y súper legible en iPhone SE */
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        padding: 4px 6px;
+    }
+
+    /* Ajustes para el Banner (Hero): ¡Le damos aire para que no se vea apretado! */
+    .hero {
+        height: 65vh; /* Le subimos la altura para que la imagen respire y se luzca */
+        background-position: center center; /* Centrado perfecto de los protagonistas */
+    }
+    
+    .hero-content h1 {
+        font-size: 24px; /* Título equilibrado que no se desborda */
+        padding: 0 15px;
+        line-height: 1.2;
+    }
+    
+    /* Ajustes de las Tarjetas para que se apilen de forma fluida */
     .info-card {
-        flex-direction: column; /* Tarjeta a vertical */
+        flex-direction: column; 
     }
     
     .card-image {
         min-width: 100%;
-        height: 250px;
+        height: 240px; /* Altura ideal de imagen en celular */
     }
 
+    /* Sección de Personajes uno abajo del otro */
     #personajes {
         flex-direction: column;
         align-items: center;
