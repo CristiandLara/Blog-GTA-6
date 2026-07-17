@@ -68,7 +68,6 @@ body {
    BANNER PRINCIPAL (HERO)
    ========================================== */
 .hero {
-    /* Corregido: Si tu CSS y tu HTML están al mismo nivel, no uses "../" */
     background-image: url(Banner.jpg);
     background-size: cover;
     background-position: center;
@@ -123,7 +122,7 @@ body {
     max-width: 900px;
     width: 100%;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .info-card:hover {
@@ -131,9 +130,12 @@ body {
     border-color: rgba(255, 0, 127, 0.5);
 }
 
+/* Contenedor de la Imagen con Máscara para el Zoom */
 .card-image {
     flex: 1;
     min-width: 300px;
+    position: relative;
+    overflow: hidden; /* Evita que las imágenes se salgan de las tarjetas en el zoom */
 }
 
 .card-image img {
@@ -141,6 +143,14 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    /* Suavizado fluido para el zoom */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+/* Efecto Zoom en todas las imágenes al pasar el mouse por encima de cualquier tarjeta */
+.info-card:hover .card-image img {
+    transform: scale(1.12); /* Ampliación elegante del 12% */
+    filter: brightness(1.05); /* Un toque de iluminación */
 }
 
 .card-details {
@@ -232,7 +242,6 @@ body {
     color: #000000;
 }
 
-
 /* ==========================================
    SECCIÓN DEL TRÁILER (YOUTUBE)
    ========================================== */
@@ -283,6 +292,89 @@ body {
 }
 
 /* ==========================================
+   NUEVOS ESTILOS: PERSONAJES (FLEXBOX GRID)
+   ========================================== */
+#personajes {
+    display: flex;
+    flex-direction: row; /* Coloca a Jason y Lucía de lado en escritorio */
+    flex-wrap: wrap; /* Permite saltar de línea en responsive */
+    justify-content: center;
+    gap: 30px;
+}
+
+#personajes .character-card {
+    max-width: 550px; /* Tamaño adaptado para diseño dual */
+}
+
+/* ==========================================
+   NUEVOS ESTILOS: SECCIÓN MÚSICA & SPOTIFY
+   ========================================== */
+.spotify-link {
+    display: inline-block;
+    background-color: #1db954; /* Verde oficial */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-align: center;
+    align-self: flex-start;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+}
+
+.spotify-link:hover {
+    background-color: #1ed760; /* Verde más claro */
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5);
+}
+
+/* ==========================================
+   NUEVOS ESTILOS: PIE DE PÁGINA (FOOTER)
+   ========================================== */
+.footer {
+    background-color: #050505;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 0, 127, 0.15); /* Línea neón sutil */
+    width: 100%;
+}
+
+.footer p {
+    color: #707070;
+    font-size: 13px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff007f;
+    text-shadow: 0 0 10px #ff007f; /* Brillo rosa al pasar cursor */
+}
+
+.footer-links .divider {
+    color: rgba(255, 0, 127, 0.3);
+    font-weight: 300;
+    font-size: 18px;
+}
+
+/* ==========================================
    RESPONSIVE DESIGN (MÓVILES)
    ========================================== */
 @media (max-width: 768px) {
@@ -291,11 +383,20 @@ body {
     }
     
     .info-card {
-        flex-direction: column; /* Tarjeta pasa a vertical en pantallas chicas */
+        flex-direction: column; /* Tarjeta a vertical */
     }
     
     .card-image {
         min-width: 100%;
         height: 250px;
+    }
+
+    #personajes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #personajes .character-card {
+        max-width: 100%;
     }
 }
